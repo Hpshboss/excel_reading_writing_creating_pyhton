@@ -16,7 +16,6 @@ Use cmd to call pyuic to transfer .ui to .py. And edit it.
 ## Step4
 Download code and figure my logic
 
-
 <br>
 <br>
 <br>
