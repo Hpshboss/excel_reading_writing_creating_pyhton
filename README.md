@@ -15,8 +15,9 @@ Use cmd to call pyuic to transfer .ui to .py. And edit it.
 Download code and figure my logic
 
 
-
-
+<br>
+<br>
+<br>
 
 ## Instructions:
 1. create a new excel file
