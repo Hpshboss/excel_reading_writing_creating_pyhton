@@ -23,17 +23,25 @@ Download code and figure my logic
 
 ## Instructions:
 1. create a new excel file
-1.1. fill out all forms, excluding row and col of final file
-1.2. push the create button
-1.3. go to the address of final file to check
+<br>
+a. fill out all forms, excluding row and col of final file
+<br>
+b. push the create button
+<br>
+c. go to the address of final file to check
 
 2. create a new sheet of an existing excel file
+<br>
 a. fill out all forms
+<br>
 b. and notice in which(where) rows and colunms you want to fill
+<br>
 c. push the write button
+<br>
 d. go to the address of final file to check
 
 3. modify the content of a specified sheet of a certain excel file
+<br>
 a. fill out all forms
 b. and notice which(where) rows and colunms you want to modify
 c. push the write button
