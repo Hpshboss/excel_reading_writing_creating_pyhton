@@ -12,7 +12,9 @@ import xlwt
 import xlsxwriter
 from xlutils.copy import copy
 
+
 class Ui_MainWindow(object):
+    # GUI design
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1104, 638)
@@ -197,6 +199,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        # As button pushed, call these def
         self.pushButton.clicked.connect(self.read_and_create)
         self.pushButton_2.clicked.connect(self.read_and_write)
 
@@ -218,73 +221,107 @@ class Ui_MainWindow(object):
         self.label_11.setText(_translate("MainWindow", "Data Source Sheet"))
         self.label_12.setText(_translate("MainWindow", "Final File Sheet"))
 
+    # it will read out data and put on new excel file
     def read_and_create(self):
+        # be sure that application will not freeze
         try:
+            # open read file(excel) from form, lineEdit_5
             data_source_book = xlrd.open_workbook(self.lineEdit_5.text())
+            # get all sheets of the read file in list(data_source_sheet)
             data_source_sheet = data_source_book.sheets()
+            # configure which sheet in excel file the user selected
             sheet_index = 0
             for sheet_index_buffer in range(len(data_source_sheet)):
                 if data_source_sheet[sheet_index_buffer] == self.lineEdit_11.text():
                     sheet_index = sheet_index_buffer
 
+            # create a new excel file in specified address
             final_file_book = xlsxwriter.Workbook(self.lineEdit_6.text())
+            # create a sheet in new excel file
             final_file_sheet = final_file_book.add_worksheet(self.lineEdit_12.text())
 
+            # global list to get top row and left column value
             top_row_value = []
             left_col_value = []
 
+            # make sure how many rows read and run
+            # index_buffer is buffer index for syntax
             for index_buffer in range(int(self.lineEdit_2.text()) - int(self.lineEdit.text()) + 1):
+                # index is real location(row) we read
                 index = index_buffer + int(self.lineEdit.text())
+                # read
                 row_value = data_source_sheet[sheet_index].row_values(index, int(self.lineEdit_3.text()),
                                                                       int(self.lineEdit_4.text()) + 1)
+                # read top row value
                 if self.lineEdit.text() != 0:
                     top_row_value = data_source_sheet[sheet_index].row_values(0, int(self.lineEdit_3.text()),
                                                                               int(self.lineEdit_4.text()) + 1)
+                # read lef column value
                 if self.lineEdit_3.text() != 0:
                     left_col_value = data_source_sheet[sheet_index].row_values(index, 0)
+
+                # write row values in order
                 for sub_index_buffer in range(int(self.lineEdit_4.text()) - int(self.lineEdit_3.text()) + 1):
+                    # configure which user choose column range including 0
                     if int(self.lineEdit_3.text() != 0):
+                        # write first row or not
                         if (int(self.lineEdit.text()) != 0) and (index_buffer == 0):
                             final_file_sheet.write(index_buffer, sub_index_buffer + 1, top_row_value[sub_index_buffer])
                         else:
+                            # write left cell of each row
                             if sub_index_buffer == 0:
                                 final_file_sheet.write(index_buffer, 0, left_col_value[0])
                             final_file_sheet.write(index_buffer, sub_index_buffer + 1, row_value[sub_index_buffer])
                     else:
+                        # write first row or not
                         if (int(self.lineEdit.text()) != 0) and (index_buffer == 0):
                             final_file_sheet.write(index_buffer, sub_index_buffer, top_row_value[sub_index_buffer])
                         else:
                             final_file_sheet.write(index_buffer, sub_index_buffer, row_value[sub_index_buffer])
 
             final_file_book.close()
+
+            # display condition
             self.listWidget.clear()
             self.listWidget.addItem("Create Successful")
         except:
+            # display condition
             self.listWidget.clear()
             self.listWidget.addItem("Have some errors(create), go to ask Acer.")
 
+    # modify value in excel file or transfer data between two file
     def read_and_write(self):
+        # be sure that application will not freeze
         try:
+            # open read file(excel) from form, lineEdit_5
             data_source_book = xlrd.open_workbook(self.lineEdit_5.text())
+            # get all sheets of the read file in list(data_source_sheet)
             data_source_sheet = data_source_book.sheets()
+            # configure which sheet in excel file the user selected
             sheet_index = 0
             for sheet_index_buffer in range(len(data_source_sheet)):
                 if data_source_sheet[sheet_index_buffer] == self.lineEdit_11.text():
                     sheet_index = sheet_index_buffer
 
-            print(data_source_sheet[sheet_index])
-
+            # open any existing excel file, including original file(ready to modified)
             read_final_file_book = xlrd.open_workbook(self.lineEdit_6.text())
+            # backup first
             final_file_book = copy(read_final_file_book)
+            # configure if the file has the sheet
             try:
+                # add new sheet because there is no the sheet
                 final_file_sheet = final_file_book.add_sheet(self.lineEdit_12.text())
             except:
+                # there is the sheet, and get the object if sheet
                 final_file_sheet = final_file_book.get_sheet(self.lineEdit_12.text())
 
+            # make sure how many rows read and run
+            # index_buffer is buffer index for syntax
             for index_buffer in range(int(self.lineEdit_2.text()) - int(self.lineEdit.text()) + 1):
                 index = index_buffer + int(self.lineEdit.text())
                 row_value = data_source_sheet[sheet_index].row_values(index, int(self.lineEdit_3.text()),
                                                                       int(self.lineEdit_4.text()) + 1)
+                # write
                 for sub_index_buffer in range(int(self.lineEdit_10.text()) - int(self.lineEdit_9.text()) + 1):
                     written_index = index_buffer + int(self.lineEdit_7.text())
                     sub_index = sub_index_buffer + int(self.lineEdit_9.text())
@@ -292,13 +329,17 @@ class Ui_MainWindow(object):
                     final_file_sheet.write(written_index, sub_index, row_value[sub_index_buffer])
 
             final_file_book.save(self.lineEdit_6.text())
+
+            # display condition
             self.listWidget.clear()
             self.listWidget.addItem("Write Successful")
         except:
+            # display condition
             self.listWidget.clear()
             self.listWidget.addItem("Have some errors(write), go to ask Acer.")
 
 
+# open application
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
