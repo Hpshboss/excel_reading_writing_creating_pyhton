@@ -15,7 +15,10 @@ Use cmd to call pyuic to transfer .ui to .py. And edit it.
 Download code and figure my logic
 
 
-### Instructions:
+
+
+
+## Instructions:
 1. create a new excel file
 	a. fill out all forms, excluding row and col of final file
 	b. push the create button
@@ -33,5 +36,5 @@ Download code and figure my logic
 	c. push the write button
 	d. go to the address of final file to check
 	
-### Notices:
+## Notices:
 1. only do create or write on an excel file(final file form) with an extension of .xls
