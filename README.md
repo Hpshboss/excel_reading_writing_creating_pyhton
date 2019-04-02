@@ -8,7 +8,7 @@ Please download some module at first.
 ## Step2
 And use qtdesigner(pyqt5-tools) to create interface(extension is .ui).
 
-![alt text](https://github.com/Hpshboss/excel_reading_writing_creating_pyhton/interface.PNG)
+![interface](https://github.com/Hpshboss/excel_reading_writing_creating_pyhton/blob/master/interface.PNG)
 
 ## Step3
 Use cmd to call pyuic to transfer .ui to .py. And edit it.
