@@ -22,30 +22,22 @@ Download code and figure my logic
 <br>
 
 ## Instructions:
-1. create a new excel file
-<br>
-a. fill out all forms, excluding row and col of final file
-<br>
-b. push the create button
-<br>
-c. go to the address of final file to check
+### 1. create a new excel file
+	a. fill out all forms, excluding row and col of final file
+	b. push the create button
+	c. go to the address of final file to check
 
-2. create a new sheet of an existing excel file
-<br>
-a. fill out all forms
-<br>
-b. and notice in which(where) rows and colunms you want to fill
-<br>
-c. push the write button
-<br>
-d. go to the address of final file to check
+### 2. create a new sheet of an existing excel file
+	a. fill out all forms
+	b. and notice in which(where) rows and colunms you want to fill
+	c. push the write button
+	d. go to the address of final file to check
 
-3. modify the content of a specified sheet of a certain excel file
-<br>
-a. fill out all forms
-b. and notice which(where) rows and colunms you want to modify
-c. push the write button
-d. go to the address of final file to check
+### 3. modify the content of a specified sheet of a certain excel file
+	a. fill out all forms
+	b. and notice which(where) rows and colunms you want to modify
+	c. push the write button
+	d. go to the address of final file to check
 	
 ## Notices:
-1. only do create or write on an excel file(final file form) with an extension of .xls
+### 1. only do create or write on an excel file(final file form) with an extension of .xls
