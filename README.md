@@ -1,9 +1,10 @@
 ## Step1
 Please download some module at first.
 1. xlrd-1.2.0.dist
-2. xlutils-2.0.0.dist
-3. pyqt5-5.11.3.dist
-4. pyqt5-tools-5.11.3.1.4.dist
+2. xlwt-1.3.0-dist
+3. xlutils-2.0.0.dist
+4. pyqt5-5.11.3.dist
+5. pyqt5-tools-5.11.3.1.4.dist
 
 ## Step2
 And use qtdesigner(pyqt5-tools) to create interface(extension is .ui).
