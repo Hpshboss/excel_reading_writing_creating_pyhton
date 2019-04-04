@@ -1,5 +1,5 @@
 ## Step1
-Please download some module at first.
+Please download these modules at first.
 1. xlrd-1.2.0.dist
 2. xlwt-1.3.0-dist
 3. xlutils-2.0.0.dist
