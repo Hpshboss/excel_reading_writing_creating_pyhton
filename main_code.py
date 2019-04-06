@@ -312,7 +312,7 @@ class Ui_MainWindow(object):
                 # add new sheet because there is no the sheet
                 final_file_sheet = final_file_book.add_sheet(self.lineEdit_12.text())
             except:
-                # there is the sheet, and get the object if sheet
+                # there is the sheet, and get the object of sheet
                 final_file_sheet = final_file_book.get_sheet(self.lineEdit_12.text())
 
             # make sure how many rows read and run
